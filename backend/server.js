@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('HiDoctor backend is running 🚀');
+});
+
 const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
