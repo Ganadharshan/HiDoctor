@@ -22,8 +22,16 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: updatedMessages }),
       });
-
+      if (!response.ok) { 
+        throw new Error('Server error');
+      }
+      
       const data = await response.json();
+      console.log ("Backend response:", data);
+
+      if (!data.reply) { 
+        throw new Error('No reply from server');
+      }
       const aiMessage = { role: 'assistant', content: data.reply };
       setMessages([...updatedMessages, aiMessage]);
     } catch (error) {
