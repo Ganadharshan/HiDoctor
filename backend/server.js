@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('HiDoctor backend is running 🚀');
+  res.send('HiDoctor backend is running');
 });
 
 const client = new Groq({
