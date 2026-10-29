@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import ReactMarkdown from 'react-markdown';
 
 function App() {
   const [messages, setMessages] = useState([]); // chat history
@@ -58,7 +59,13 @@ function App() {
         )}
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.role}`}>
-            <span className="bubble">{msg.content}</span>
+            <span className="bubble">
+            {msg.role === 'assistant' ? (
+            <ReactMarkdown>{msg.content}</ReactMarkdown>
+            ) : (
+            msg.content
+          )}
+</span>
           </div>
         ))}
         {loading && (
